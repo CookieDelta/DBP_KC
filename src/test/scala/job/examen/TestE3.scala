@@ -5,7 +5,7 @@ import job.examen.examen._
 
 case class EstudianteTest(id: Int, nombre: String)
 case class Calificaciones(id_estudiante: Int, asignatura: String, calificacion: Int)
-case class Resultado(id_estudiante: Int, nombre: String, promedio_asignatura: Option[Double])
+case class Resultado(id_estudiante: Int, nombre: String, promedio: Option[Double])
 
 class TestE3 extends TestInit {
 

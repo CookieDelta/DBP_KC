@@ -20,7 +20,7 @@ class TestE5 extends TestInit {
 
   "E5 Caso 2" should "Calcular el ingreso total por producto correctamente desde ventas.csv" in {
 
-    val rutaCSV = "src/test/resources/ventas.csv"
+    val rutaCSV = "src\\test\\scala\\resources\\ventas.csv"
     val ventas: DataFrame = spark.read
       .option("header", "true")
       .option("inferSchema", "true")
@@ -32,9 +32,16 @@ class TestE5 extends TestInit {
 
 
     val esperado: DataFrame = Seq(
-      (101, 46.5),  //solo datos ficticios para que corra el test y de error, entonces podré saber los valores
-      (102, 100.0),
-      (103, 50.0)
+      (109, 540.0),
+      (105, 570.0),
+      (106, 425.0),
+      (103, 280.0),
+      (108, 486.0),
+      (104, 800.0),
+      (110, 494.0),
+      (101, 460.0),
+      (102, 405.0),
+      (107, 396.0)
     ).toDF("id_producto", "ingreso_total")
 
     assert(resultado.collect().toSet == esperado.collect().toSet)

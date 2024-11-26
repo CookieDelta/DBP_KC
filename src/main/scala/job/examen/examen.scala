@@ -22,10 +22,10 @@ object examen {
     estudiantes.printSchema()
 
     //Filtra los estudiantes con una calificación mayor a 8.
-    val mayor8 = estudiantes.filter(col("calificación") > 8)
+    val mayor8 = estudiantes.filter(col("calificacion") > 8)
 
     //Selecciona los nombres de los estudiantes y ordénalos por calificación de forma descendente.
-    mayor8.orderBy(desc("calificación")).select("nombre") //, "calificación")
+    mayor8.orderBy(desc("calificacion")).select("nombre") //, "calificación")
 
   }
 
@@ -50,9 +50,10 @@ object examen {
    */
   def ejercicio3(estudiantes: DataFrame, calificaciones: DataFrame): DataFrame = {
 
-    val allrequired = estudiantes.join(calificaciones, estudiantes("id") === calificaciones("id_estudiante"))
-      .groupBy("id_estudiante").agg(avg("calificacion")).alias("promedio") //.drop("id_estudiante")
-
+    val allrequired = estudiantes
+      .join(calificaciones, estudiantes("id") === calificaciones("id_estudiante"))
+      .groupBy("id_estudiante", "nombre")
+      .agg(round(avg("calificacion"), 2).as("promedio"))
     allrequired
 
   }

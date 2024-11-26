@@ -29,6 +29,8 @@ class TestE2 extends TestInit {
 
     val resultado = ejercicio2(numeros)
 
+    resultado.show()
+
     checkDf(salidaesperada, resultado)
   }
 }

@@ -48,7 +48,7 @@ class TestE1 extends TestInit {
       ("Hugo", 23, 9.6),
       ("Natalia", 18, 8.5),
       ("Adrián", 19, 7.4)
-    ).toDF() //Se añadieron 30 estudiantes a Data, como tupla
+    ).toDF("nombre","edad","calificacion") //Se añadieron 30 estudiantes a Data, como tupla
 
     val salidaesperada = Seq(
       "Claudia",
@@ -58,15 +58,15 @@ class TestE1 extends TestInit {
       "Isabel",
       "Ana",
       "Valeria",
-      "Raúl",
       "Sofía",
+      "Raúl",
       "Lucía",
       "Natalia",
       "Ricardo",
       "Emilio",
       "Luis",
       "Gabriel"
-    ).toDF("Nombre")
+    ).toDF("nombre")
 
     val resultado = ejercicio1(estudiantesData)
 
